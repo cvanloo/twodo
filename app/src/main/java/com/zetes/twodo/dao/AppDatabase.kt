@@ -9,7 +9,7 @@ import com.zetes.twodo.entity.Todo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Todo::class], version = 1)
+@Database(entities = [Todo::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun todoDao(): TodoDao
 
@@ -18,7 +18,7 @@ abstract class AppDatabase : RoomDatabase() {
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    // Initialize database when it is created for the first time
+                    // TODO: Initialize database when it is created for the first time
                 }
             }
         }

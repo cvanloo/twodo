@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ColumnInfo
 import androidx.room.TypeConverters
-import java.sql.Date
+import java.util.Date
 
 @Entity(tableName = "todos")
 @TypeConverters(Converters::class)
