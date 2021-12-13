@@ -9,7 +9,7 @@ import com.zetes.twodo.entity.Todo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Todo::class], version = 2)
+@Database(entities = [Todo::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun todoDao(): TodoDao
 

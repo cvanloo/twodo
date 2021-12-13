@@ -9,8 +9,9 @@ import java.util.Date
 @Entity(tableName = "todos")
 @TypeConverters(Converters::class)
 data class Todo(
-    @PrimaryKey val tid: Int,
+    @PrimaryKey(autoGenerate = true) val tid: Int,
     val title: String,
+    val description: String?,
     val due: Date,
     val completed: Boolean,
     val type: TodoType
