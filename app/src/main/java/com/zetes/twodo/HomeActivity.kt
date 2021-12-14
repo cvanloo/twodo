@@ -1,8 +1,5 @@
 package com.zetes.twodo
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -11,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.zetes.twodo.controller.AlarmScheduler
 import com.zetes.twodo.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -26,17 +24,8 @@ class HomeActivity : AppCompatActivity() {
         todo?.let {
             todoViewModel.insert(todo)
 
-            val alarmManager: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val receiverIntent = Intent(this, ScheduledBroadcastReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, receiverIntent, 0)
-
-            // TODO: Check and Ask user for permission!
-
-            alarmManager.setExactAndAllowWhileIdle(
-                AlarmManager.RTC_WAKEUP,
-                todo.due.time,
-                pendingIntent
-            )
+            val alarmScheduler = AlarmScheduler(this)
+            alarmScheduler.schedule(todo.due.time)
         }
     }
 
