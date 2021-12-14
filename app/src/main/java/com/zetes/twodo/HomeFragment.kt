@@ -13,7 +13,6 @@ import com.zetes.twodo.databinding.FragmentHomeBinding
 import com.zetes.twodo.entity.Todo
 import com.zetes.twodo.entity.TodoType
 import com.zetes.twodo.recycler.TodoListAdapter
-import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -47,7 +46,7 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         val pos =  todoData.size
-        todoData.add(Todo(5, "hey", "world", Date(), false, TodoType.Regular))
+        todoData.add(Todo(5, "hey", "world", java.util.Date(), false, TodoType.Regular))
         todoAdapter.notifyItemInserted(pos)
 
         todoViewModel.allTodos.observe(this, { todos ->
@@ -56,8 +55,6 @@ class HomeFragment : Fragment() {
                 todoData.clear()
                 todoData.addAll(todos)
                 todoAdapter.notifyDataSetChanged()
-
-                Log.e("HEY", todoData.size.toString())
             }
         })
 

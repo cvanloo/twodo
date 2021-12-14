@@ -26,6 +26,9 @@
         <activity
             android:name=".NewTodoActivity"
             android:exported="false" />
+        <service android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>

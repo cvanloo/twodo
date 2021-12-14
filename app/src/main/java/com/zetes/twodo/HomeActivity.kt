@@ -1,5 +1,6 @@
 package com.zetes.twodo
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +40,10 @@ class HomeActivity : AppCompatActivity() {
         binding.fab.setOnClickListener { view ->
             fetchTodo.launch(NewTodoActivity.ADD_TODO)
         }
+
+        // start the foreground notification service
+        val notifIntent = Intent(this, NotificationService::class.java)
+        startForegroundService(notifIntent)
     }
 
     override fun onSupportNavigateUp(): Boolean {
